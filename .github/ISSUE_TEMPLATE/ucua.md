@@ -1,0 +1,36 @@
+---
+name: UCUA
+about: Describe this issue template's purpose here.
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+---
+name: Unsafe Act Report
+about: Report an unsafe act observed in the workplace
+title: "[Unsafe Act] - <Brief Description>"
+labels: "Unsafe Act"
+---
+
+**Date and Time of Observation:**
+- YYYY-MM-DD HH:MM
+
+**Location:**
+- [Specific location where the act was observed]
+
+**Description of Unsafe Act:**
+- [Detailed description of what was observed]
+
+**Potential Consequences:**
+- [Possible outcomes if the act is not addressed]
+
+**Immediate Actions Taken:**
+- [Actions taken to address the unsafe act]
+
+**Suggestions for Preventive Measures:**
+- [Suggestions to prevent recurrence]
+
+**Reported by:**
+- [Your Name]
