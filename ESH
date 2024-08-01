@@ -1,0 +1,40 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+
+# Define your questions
+questions = [
+    "What is your name?",
+    "How old are you?",
+    "What is your favorite color?",
+]
+
+# Store user responses
+user_data = {}
+
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(questions[0])
+
+def response_handler(update: Update, context: CallbackContext) -> None:
+    user_id = update.message.from_user.id
+    user_data.setdefault(user_id, []).append(update.message.text)
+    
+    # Check if we have more questions to ask
+    if len(user_data[user_id]) < len(questions):
+        update.message.reply_text(questions[len(user_data[user_id])])
+    else:
+        # Form complete, handle the data (e.g., save to database)
+        update.message.reply_text("Thank you for completing the form!")
+        print(f"User {user_id} responses: {user_data[user_id]}")  # For demonstration purposes
+
+def main() -> None:
+    updater = Updater("YOUR_TELEGRAM_BOT_TOKEN")
+    dispatcher = updater.dispatcher
+
+    dispatcher.add_handler(CommandHandler("start", start))
+    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, response_handler))
+
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
